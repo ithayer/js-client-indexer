@@ -1,0 +1,4 @@
+test data/test.txt data/foobar.txt
+blah data/blah.txt
+foo data/foobar.txt
+bar data/foobar.txt

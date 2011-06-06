@@ -1,0 +1,33 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">
+</script>
+</head>
+<body>
+  Hello.
+  
+  <ul id="main-list">
+    <li id="template"></li>
+  </ul>
+<script type="text/javascript">
+  function make_list_item(div, textline) {
+  var words = textline.split(" ");
+  
+  var html = words.splice(0, 1);
+  
+  $.map(words, function(word, index) { 
+  html += "&nbsp;<a href='" + word + "'>" + word + "</a>";
+  });
+  
+  $(div).html(html);
+  }
+  
+  $.get("./data/index", "", function(responseText, textStatus, request) { 
+    var list_item_template = $("#template").detach();
+    $.map(responseText.split("\n"), function(textline, index) {
+    make_list_item(list_item_template.clone().attr("id", "").appendTo($("#main-list")), textline);
+    });
+  });
+</script>
+</body>
+</html>
